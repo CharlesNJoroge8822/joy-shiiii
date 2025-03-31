@@ -11,7 +11,7 @@ export const StockProvider = ({ children }) => {
   const fetchStock = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://127.0.0.1:5000/stock/all');
+      const response = await axios.get('https://joy-shiiiii-backend.onrender.com/stock/all');
       setStock(response.data);
     } catch (err) {
       setError(err.message);
@@ -22,7 +22,7 @@ export const StockProvider = ({ children }) => {
 
   const addStock = async (stockData) => {
     try {
-      const response = await axios.post('http://127.0.0.1:5000/stock/add', stockData);
+      const response = await axios.post('https://joy-shiiiii-backend.onrender.com/stock/add', stockData);
       setStock(prev => [...prev, response.data]);
       return response.data;
     } catch (err) {
@@ -32,7 +32,7 @@ export const StockProvider = ({ children }) => {
 
   const updateStock = async (stockId, stockData) => {
     try {
-      const response = await axios.put(`http://127.0.0.1:5000/stock/update/${stockId}`, stockData);
+      const response = await axios.put(`https://joy-shiiiii-backend.onrender.com/stock/update/${stockId}`, stockData);
       setStock(prev => prev.map(item => 
         item.id === stockId ? response.data : item
       ));
@@ -44,7 +44,7 @@ export const StockProvider = ({ children }) => {
 
   const deleteStock = async (stockId) => {
     try {
-      await axios.delete(`http://127.0.0.1:5000/stock/delete/${stockId}`);
+      await axios.delete(`https://joy-shiiiii-backend.onrender.com/stock/delete/${stockId}`);
       setStock(prev => prev.filter(item => item.id !== stockId));
     } catch (err) {
       throw err;

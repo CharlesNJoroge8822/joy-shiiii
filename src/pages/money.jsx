@@ -12,7 +12,7 @@ const ManageFunds = () => {
   });
 
   // Base API URL - adjust this to match your backend
-  const API_BASE_URL = 'http://localhost:5000/'; // Added /api prefix to match backend
+  const API_BASE_URL = 'https://joy-shiiiii-backend.onrender.com/'; //
 
   useEffect(() => {
     fetchPulledMoney();

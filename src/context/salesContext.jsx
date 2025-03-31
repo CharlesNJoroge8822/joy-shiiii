@@ -12,7 +12,7 @@ export const SalesProvider = ({ children }) => {
   const fetchWholesaleSales = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://127.0.0.1:5000/wholesale/all');
+      const response = await axios.get('https://joy-shiiiii-backend.onrender.com/wholesale/all');
       setWholesaleSales(response.data);
     } catch (err) {
       setError(err.message);
@@ -24,7 +24,7 @@ export const SalesProvider = ({ children }) => {
   const fetchRetailSales = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://127.0.0.1:5000/retail/all');
+      const response = await axios.get('https://joy-shiiiii-backend.onrender.com/retail/all');
       setRetailSales(response.data);
     } catch (err) {
       setError(err.message);
@@ -35,7 +35,7 @@ export const SalesProvider = ({ children }) => {
 
   const addWholesaleSale = async (saleData) => {
     try {
-      const response = await axios.post('http://127.0.0.1:5000/wholesale/add', saleData);
+      const response = await axios.post('https://joy-shiiiii-backend.onrender.com/wholesale/add', saleData);
       setWholesaleSales(prev => [...prev, response.data]);
       return response.data;
     } catch (err) {
@@ -45,7 +45,7 @@ export const SalesProvider = ({ children }) => {
 
   const addRetailSale = async (saleData) => {
     try {
-      const response = await axios.post('http://127.0.0.1:5000/retail/add', saleData);
+      const response = await axios.post('https://joy-shiiiii-backend.onrender.com/retail/add', saleData);
       setRetailSales(prev => [...prev, response.data]);
       return response.data;
     } catch (err) {
@@ -55,7 +55,7 @@ export const SalesProvider = ({ children }) => {
 
   const updateSaleStatus = async (saleId, type) => {
     try {
-      const endpoint = type === 'wholesale' ? 'http://127.0.0.1:5000/wholesale/update' : 'http://127.0.0.1:5000/retail/update';
+      const endpoint = type === 'wholesale' ? 'https://joy-shiiiii-backend.onrender.com/wholesale/update' : 'https://joy-shiiiii-backend.onrender.com/retail/update';
       await axios.put(`${endpoint}/${saleId}`, { status: 'Paid' });
       
       if (type === 'wholesale') {
@@ -74,7 +74,7 @@ export const SalesProvider = ({ children }) => {
 
   const deleteSale = async (saleId, type) => {
     try {
-      const endpoint = type === 'wholesale' ? 'http://127.0.0.1:5000/wholesale/delete' : 'http://127.0.0.1:5000/retail/delete';
+      const endpoint = type === 'wholesale' ? 'https://joy-shiiiii-backend.onrender.com/wholesale/delete' : 'https://joy-shiiiii-backend.onrender.com/retail/delete';
       await axios.delete(`${endpoint}/${saleId}`);
       
       if (type === 'wholesale') {
